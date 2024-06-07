@@ -25,7 +25,7 @@
                     @foreach ($projects as $project)
                         <tr class="p-3">
                             <td>{{$project->id}}</td>
-                            <td><a href="{{route('admin.projects.show', $project)}}"> {{$project->title}} </a></td>
+                            <td><a href="{{route('guests.projects.show', $project)}}"> {{$project->title}} </a></td>
                             <td>{{$project->description}}</td>
                             <td>{{optional($project->type)->name}}</td>
                             <td>{{$project->link}}</td>

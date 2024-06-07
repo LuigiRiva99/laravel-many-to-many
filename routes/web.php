@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //guests
+Route::get('/', [GuestController::class, 'index'])->name('guests.projects.index');
 Route::get('/guests/projects', [GuestController::class, 'index'])->name('guests.projects.index');
 Route::get('/guests/projects/{project}', [GuestController::class, 'show'])->name('guests.projects.show');
 
