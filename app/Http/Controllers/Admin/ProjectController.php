@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -28,7 +29,8 @@ class ProjectController extends Controller
     {
         //recupero array di types per poterlo passare alla vista create
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types','technologies'));
     }
 
     /**
@@ -46,6 +48,11 @@ class ProjectController extends Controller
         $data = $request->all();
 
         $new_project = Project::create($data);
+
+        // controllo se c`è il parametro technologies
+        if ($request->has('technologies')) {
+            $post->tags()->attach($request->tags);
+        }
 
         return to_route('admin.projects.show', $new_project);
     }
@@ -65,7 +72,9 @@ class ProjectController extends Controller
     {
         //recupero array di types per poterlo passare alla vista edit
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        //recupero array di technologies per poterlo passare alla vista edit
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types','technologies'));
     }
 
     /**
@@ -85,6 +94,14 @@ class ProjectController extends Controller
         $project->fill($data);
 
         $project->save();
+
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        } else {
+            // elimino se user non seleziona nulla
+            $project->technologies()->detach();
+            // $project->technologies()->sync([]);
+        }
 
         return view('admin.projects.show', compact('project')) ;
     }

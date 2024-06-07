@@ -32,6 +32,24 @@
                 </select>
             </div>
 
+            <div class="form-group mb-3">
+                <p>Select Technologies</p>
+        
+                <div class="d-flex gap-2">
+                    @foreach ($technologies as $tech)
+        
+                    <div class="form-check">
+                        <input @checked( in_array($tech->id, old('technologies',[])) ) name="technologies[]" class="form-check-input" type="checkbox" value="{{ $tech->id }}" id="tech-{{$tech->id}}">
+                        <label class="form-check-label" for="tech-{{$tech->id}}">
+                        {{ $tech->name }}
+                        </label>
+                    </div>
+                        
+                    @endforeach
+                </div>
+            
+            </div>
+
             <div class="mb-3">
                 <label for="link" class="form-label">Link</label>
                 <input type="text" name="link" class="form-control" id="link" placeholder="link">
