@@ -16,6 +16,7 @@
                         <th>Title</th>
                         <th>Description</th>
                         <th>Type</th>
+                        <th>Technologies</th>
                         <th>Link</th>
                     </tr>
                     </thead>
@@ -25,6 +26,11 @@
                             <td>{{$project->title}}</td>
                             <td>{{$project->description}}</td>
                             <td>{{optional($project->type)->name}}</td>
+                            <td>
+                                @foreach ($project->technologies as $tech)
+                                {{$tech->name}}
+                                @endforeach
+                            </td>
                             <td>{{$project->link}}</td>
                         </tr>    
                     </tbody>

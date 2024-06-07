@@ -19,6 +19,7 @@
                         <th>Description</th>
                         <th>Types</th>
                         <th>Link</th>
+                        <th>Technologies</th>
                     </tr>
                     </thead>
                     <tbody  class="table-group-divider table-hover table-striped">
@@ -29,6 +30,11 @@
                             <td>{{$project->description}}</td>
                             <td>{{optional($project->type)->name}}</td>
                             <td>{{$project->link}}</td>
+                            <td>
+                                @foreach ($project->technologies as $tech)
+                                {{$tech->name}}
+                                @endforeach
+                            </td>
                             <td><a class="btn btn-primary" href="{{route('guests.projects.show', $project)}}">details </a></td>
                     @endforeach
                     </tbody>

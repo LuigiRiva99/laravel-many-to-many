@@ -19,6 +19,7 @@
                         <th>Title</th>
                         <th>Description</th>
                         <th>Types</th>
+                        <th>Technologies</th>
                         <th>Link</th>
                     </tr>
                     </thead>
@@ -29,6 +30,11 @@
                             <td><a href="{{route('admin.projects.show', $project)}}"> {{$project->title}} </a></td>
                             <td>{{$project->description}}</td>
                             <td>{{optional($project->type)->name}}</td>
+                            <td>
+                                @foreach ($project->technologies as $tech)
+                                {{$tech->name}}
+                                @endforeach
+                            </td>
                             <td>{{$project->link}}</td>
                             <td><a class="btn btn-primary" href="{{route('admin.projects.show', $project)}}">details </a></td>
                             <td>
