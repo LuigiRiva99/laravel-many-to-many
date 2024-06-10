@@ -1,3 +1,8 @@
 @use './partials/_header';
 @use './partials/_footer';
 @import '~bootstrap/scss/bootstrap';
+
+
+.type-col{
+    width: 150px;
+}

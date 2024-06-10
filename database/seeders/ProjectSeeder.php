@@ -17,7 +17,7 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        DB::table('Projects')->truncate();
+        // DB::table('Projects')->truncate();
 
         //prendo i types (collection)
         $types = Type::all(); 

@@ -18,7 +18,7 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Types</th>
+                        <th class="type-col">Types</th>
                         <th>Technologies</th>
                         <th>Link</th>
                     </tr>

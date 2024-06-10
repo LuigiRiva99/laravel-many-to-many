@@ -13,7 +13,7 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $types = ['Vue','HTML','CSS','PHP','Laravel'];
+        $types = ['Front-end','Back-end','Fullstack','Design'];
 
         foreach ($types as $type) {
 
